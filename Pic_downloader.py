@@ -13,7 +13,7 @@ except Exception :
 	print("This account does not exist")
 	sys.exit(0)
 
-COOKIE = '' # provide sessionID (Browser developer tools)
+Query_ID = '' # provide sessionID (Browser developer tools)
 idd = ""
 end_cursor = ""
 pics = []
@@ -35,7 +35,7 @@ if has_next_page :
 
 while has_next_page :
 	 
-	link = "https://www.instagram.com/graphql/query/?query_hash="+COOKIE+"&variables={\"id\":\""+idd+"\",\"first\":50,\"after\":\""+end_cursor+"\"}"
+	link = "https://www.instagram.com/graphql/query/?query_hash="+Query_ID+"&variables={\"id\":\""+idd+"\",\"first\":50,\"after\":\""+end_cursor+"\"}"
 	source = requests.get(link).text
 	js= json.loads(source)
 	nodes = js['data']['user']['edge_owner_to_timeline_media']['edges']
